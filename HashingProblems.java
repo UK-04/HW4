@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Usman Khan / COMP 272-002 ***
  *
  * This HashingProblems object contains three methods / problems that you must
  * complete utilize the HashMap object within the Java's Collection Framework Library.
@@ -41,7 +41,25 @@ class HashingProblems {
          * returning 0.0/0.0 IS correct (which would return a non-number).
          */
 
-         return 0.0 / 0.0;
+        // initialize sum and count variable
+        double sum = 0.0;
+        int count = 0;
+
+        // iterate thru the array and check if array index is in hashmap
+        // add into sum variable
+        for (int key : array) {
+            if (map.containsKey(key)) {
+                sum += map.get(key);
+                count++;
+            }
+        }
+
+        // edge case: check if count is greater than 0 or else return 0
+        if (count > 0) {
+            return sum / count;
+        }
+
+         return 0;
   }
 
 
@@ -61,8 +79,12 @@ class HashingProblems {
        *
        * Hint: Consider iterating over the HashMap using the keySet method.
        */
-
-
+        Set<Integer> mapSet = map.keySet();
+        for (int key : mapSet) {
+            if (key % 2 != 0) {
+                result.add(map.get(key));
+            }
+        }
       return result;
   }
 
@@ -109,8 +131,18 @@ class HashingProblems {
       /*
        * ADD YOUR CODE HERE
        */
+        HashSet<Integer> set = new HashSet<>();
+        int count = 0;
+        for (int num : numbers) {
+            set.add(num);
+        }
 
-      return -1;
+        for (int num : numbers) {
+            if (set.contains(num + k)) {
+                count++;
+            }
+        }
+        return count;
   }
 
 } /* end class HashingProblems */
